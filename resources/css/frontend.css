@@ -1,0 +1,259 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* navigation */
+
+:root {
+    font-family: 'Open Sans', sans-serif;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+.navigation {
+    @apply .px-4 .w-full .flex;
+    width: 280px;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -280px;
+    background-color: #ffffff;
+    -webkit-transition: left 500ms;
+    transition: left 500ms;
+}
+
+.navigation ul {
+    @apply .w-full;
+}
+
+.navigation .mobile-logo {
+    @apply .w-full .text-center .py-6 .border-b .border-gray-200 .mb-2 .font-bold .text-2xl;
+}
+
+.navigation.active {
+    left: 0;
+}
+
+.nav-link {
+    @apply .inline-block .px-4 .py-3 .font-bold .text-sm .uppercase .w-full;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    @apply .text-green-400;
+}
+
+@screen md {
+    .navigation {
+        @apply .justify-end;
+        width: auto;
+        min-height: auto;
+        position: relative;
+        left: 0;
+    }
+    .navigation ul {
+        @apply w-auto flex ml-auto;
+    }
+    .navigation .mobile-logo {
+        @apply .hidden;
+    }
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #00000042;
+}
+
+
+/* card */
+
+.card {
+    @apply .flex .flex-col .bg-white .shadow .rounded-md .overflow-hidden;
+}
+
+.card-body {
+    @apply .bg-white .flex .flex-col .justify-start .p-6;
+}
+
+.card-title {
+    @apply .text-xl .pb-4 .leading-tight .text-gray-800;
+}
+
+.card-title:hover {
+    @apply .text-gray-700;
+}
+
+.card .author-title {
+    @apply .font-semibold .text-gray-600;
+}
+
+.card .author-title:hover {
+    @apply .text-green-500;
+}
+
+.campaign .progress {
+    @apply .bg-gray-200 .h-2 .rounded .overflow-hidden;
+}
+
+.campaign .progress-bar {
+    @apply .bg-green-500 .h-full;
+}
+
+
+/* body */
+
+.body h1 {
+    @apply .text-3xl .font-semibold .leading-tight .mb-2;
+}
+
+.body h2 {
+    @apply .text-2xl .font-semibold .leading-tight .mb-2;
+}
+
+.body h3 {
+    @apply .text-xl .font-semibold .leading-tight .mb-2;
+}
+
+.body p {
+    @apply .mb-4;
+}
+
+
+/* form */
+
+.form-label {
+    @apply .block .tracking-wide .text-gray-700 .text-xs .font-bold .mb-2;
+}
+
+.form-control {
+    @apply .w-full .px-4 .py-3 .rounded .appearance-none .border .border-gray-200 .bg-gray-200 .text-gray-700 .leading-tight;
+}
+
+.form-control:focus {
+    @apply .outline-none .bg-white .border-gray-500;
+}
+
+.form-control.invalid {
+    @apply .border-red-500;
+}
+
+.form-help {
+    @apply .text-xs .italic .text-gray-600 .leading-none .mt-2;
+}
+
+.invalid-feedback {
+    @apply .text-xs .italic .text-red-500 .leading-none .mt-2;
+}
+
+.toggle {
+    @apply .relative .inline-block .align-middle .select-none;
+    min-width: 2.5rem;
+}
+
+.toggle-checkbox {
+    @apply .absolute .block .w-6 .h-6 .rounded-full .bg-white .border-4 .appearance-none .cursor-pointer;
+    right: 16px;
+    transition: right 200ms ease-out;
+}
+
+.toggle-checkbox:checked {
+    @apply .right-0 .border-green-500 .right-0;
+}
+
+.toggle-checkbox:checked+.toggle-label {
+    @apply .bg-green-500 .transition .duration-200 ease-out;
+}
+
+.toggle-checkbox:focus {
+    @apply .outline-none;
+}
+
+.toggle-label {
+    @apply .block .overflow-hidden .h-6 .rounded-full .bg-gray-300 .cursor-pointer;
+}
+
+
+/* donate */
+
+.donate-amount {
+    @apply .bg-white .border .border-gray-200 .cursor-pointer .transition .duration-200 .p-3 .rounded-md .mb-3 .block;
+}
+
+.donate-amount:hover {
+    @apply border-green-400;
+}
+
+
+/* button */
+
+.btn {
+    @apply .inline-block .px-6 .py-4 .border .leading-tight .rounded .text-center .text-sm .font-semibold;
+}
+
+.btn-sm {
+    @apply .inline-block .px-3 .py-1 .border .leading-tight .rounded-full .text-center .text-xs;
+}
+
+.btn:disabled,
+.btn-sm:disabled {
+    @apply .bg-gray-300 .text-gray-500 .border-gray-300 .cursor-not-allowed;
+}
+
+.btn:disabled:hover,
+.btn-sm:disabled:hover {
+    @apply .bg-gray-300 .text-gray-500 .border-gray-300 .cursor-not-allowed;
+}
+
+.btn:focus,
+.btn-sm:focus {
+    @apply .outline-none;
+}
+
+.btn-accent {
+    @apply .bg-orange-500 .border-orange-500 .text-white;
+}
+
+.btn-accent:hover {
+    @apply .bg-orange-400 .border-orange-400;
+}
+
+.btn-success {
+    @apply .bg-green-500 .border-green-500 .text-white;
+}
+
+.btn-success:hover {
+    @apply .bg-green-400 .border-green-400;
+}
+
+.btn-light {
+    @apply .bg-gray-100 .text-gray-600 .border-gray-100;
+}
+
+.btn-light:hover {
+    @apply .bg-white .border-white;
+}
+
+.btn-link {
+    @apply .text-green-500;
+}
+
+.btn-link:hover {
+    @apply .underline;
+}
+
+.payment-option {
+    @apply .border-b .border-gray-300 .py-3 .flex .items-center .justify-between cursor-pointer;
+}
+
+.payment-method .payment-option:first-child {
+    @apply .border-t;
+}

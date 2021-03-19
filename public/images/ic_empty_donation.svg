@@ -1,0 +1,12 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ic_empty_dotation">
+<path id="Vector 5" d="M68.5 395V136L114.5 170H443.5V435C443.5 440.523 439.023 445 433.5 445H118.5C90.8858 445 68.5 422.614 68.5 395Z" fill="#48BB78"/>
+<path id="Intersect" fill-rule="evenodd" clip-rule="evenodd" d="M408 170V401C408 406.523 403.523 411 398 411H83C78.7275 411 74.5802 410.464 70.6215 409.456C69.2417 404.879 68.5 400.026 68.5 395V136L114.5 170H408Z" fill="white" fill-opacity="0.3"/>
+<path id="Rectangle 23" d="M68 111C68 85.5949 88.5949 65 114 65H396V157H114C88.5949 157 68 136.405 68 111V111Z" fill="#B1C1D6"/>
+<path id="Intersect_2" fill-rule="evenodd" clip-rule="evenodd" d="M360 65V128H78C75.6336 128 73.309 127.821 71.0389 127.477C69.0758 122.361 68 116.806 68 111C68 85.5949 88.5949 65 114 65H360Z" fill="white" fill-opacity="0.3"/>
+<path id="Vector 4" d="M68 182V394.5C68 422.114 90.3858 444.5 118 444.5H443V166H117C89.9381 166 68 144.062 68 117V117C68 89.9381 89.938 68 117 68H395.5V124" stroke="#444852" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 8" d="M176 255.5L209 288.5M209 255.5L176 288.5" stroke="white" stroke-width="24" stroke-linecap="round"/>
+<path id="Vector 9" d="M305 255.5L338 288.5M338 255.5L305 288.5" stroke="white" stroke-width="24" stroke-linecap="round"/>
+<path id="Vector 10" d="M196 368C233 339.5 283.5 343.5 316.5 368" stroke="white" stroke-width="24" stroke-linecap="round"/>
+</g>
+</svg>

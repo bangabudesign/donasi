@@ -1,0 +1,15 @@
+{
+    "name": "tailwind",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build:css": "tailwindcss build src/admin.css -o /../public/backend/app.css",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Abu Bakar Halid",
+    "license": "ISC",
+    "dependencies": {
+        "tailwindcss": "^1.9.1"
+    }
+}
