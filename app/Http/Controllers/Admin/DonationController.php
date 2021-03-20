@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DonationRequest;
 use App\Models\Campaign;
-use App\Models\Donation;
+use App\Models\Transaction;
 use App\Models\PaymentMethod;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,8 +25,8 @@ class DonationController extends Controller
         $this->title = 'Donations';
         $this->subtitle = 'Daftar semua donasi';
 
-        $donations = Donation::latestFirst()->get();
-        
+        $donations = Transaction::latestFirst()->donation()->get();
+
         return view('admin.donation.index',[
             'title' => $this->title,
             'subtitle' => $this->subtitle,
@@ -73,7 +73,6 @@ class DonationController extends Controller
 
         $data = ([
             'invoice' => $invoice,
-            'campaign_id' => $request->campaign_id,
             'user_id' => $request->user_id,
             'payment_method_id' => $request->payment_method_id,
             'amount' => $request->amount,
@@ -89,7 +88,8 @@ class DonationController extends Controller
             'verified_by' => $request->verified_by,
         ]);
 
-        Donation::create($data);
+        $campaign = Campaign::findOrFail($request->campaign_id);
+        $campaign->donations()->create($data);
 
         return redirect()->route('admin.donations.index')->with('successMessage', 'Donation has been created');
     }
@@ -113,10 +113,10 @@ class DonationController extends Controller
      */
     public function edit($id)
     {
-        $donation = Donation::findOrFail($id);
+        $donation = Transaction::findOrFail($id);
 
         $this->title = 'Edit Donation';
-        $this->subtitle = $donation->user->name.' - '.$donation->campaign->title;
+        $this->subtitle = $donation->user->name.' - '.$donation->transactionable->title;
 
         $campaigns = Campaign::latestFirst()->get();
         $users = User::get();
@@ -143,10 +143,9 @@ class DonationController extends Controller
      */
     public function update(DonationRequest $request, $id)
     {
-        $donation = Donation::findOrFail($id);
+        $donation = Transaction::findOrFail($id);
 
         $data = ([
-            'campaign_id' => $request->campaign_id,
             'user_id' => $request->user_id,
             'payment_method_id' => $request->payment_method_id,
             'amount' => $request->amount,

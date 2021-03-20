@@ -26,7 +26,6 @@ class CampaignFactory extends Factory
     {
         $user = User::factory()->create();
         $title = $this->faker->sentence();
-        $code = Str::upper($this->faker->word());
         $donation_target = $this->faker->numberBetween(10, 9000).'000000';
         $finished_at = Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));
         $finished_at->addDay($this->faker->numberBetween(30, 90));
@@ -34,7 +33,6 @@ class CampaignFactory extends Factory
         return [
             'title' => $title,
             'slug' => Str::slug($title),
-            'code' => $code,
             'donation_target' => $donation_target,
             'finished_at' => $finished_at,
             'published_at' => date('Y-m-d H:i:s'),

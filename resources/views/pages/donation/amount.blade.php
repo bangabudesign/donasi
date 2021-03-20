@@ -1,8 +1,8 @@
-@extends('layouts.donate')
+@extends('layouts.transaction')
 
 @section('content')
 <!-- select amount -->
-<div class="container max-w-md mx-auto px-4 pt-20 pb-24 bg-white">           
+<div class="container max-w-md mx-auto px-4 pt-20 pb-24 min-h-screen bg-white">           
     <h4 class="font-semibold text-center pb-5">Pilih Nominal Donasi</h4>
     <a onclick="selectAmount(event)" data-amount="10000" class="donate-amount">
         <div class="flex items-center justify-between">

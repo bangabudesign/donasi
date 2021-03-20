@@ -34,22 +34,33 @@
                     <div class="md:w-1/3 p-4">
                         <div class="mb-4">
                             <label class="form-label">
-                                Code
+                                Category
                             </label>
-                            <input type="text" class="form-control @error('code') invalid @enderror" name="code" value="{{ old('code') }}" required>
-                            <p class="form-help">Huruf kapital tanpa spasi</p>
-                            @error('code')
+                            <div class="relative">
+                                <select class="form-control @error('category_id') invalid @enderror" name="category_id" required>
+                                    <option value="">Select...</option>
+                                    @forelse ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                    @empty
+                                        <option value="">No Data</option>
+                                    @endforelse
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+                            @error('category_id')
                                 <p class="invalid-feedback">{{ $message }}</p>
                             @enderror 
                         </div>
-                    </div>
+                    </div> 
                     <div class="md:w-1/3 p-4">
                         <div class="mb-4">
                             <label class="form-label">
                                 Donation Target
                             </label>
                             <input type="number" class="form-control @error('donation_target') invalid @enderror" name="donation_target" value="{{ old('donation_target','0') }}" required>
-                            <p class="form-help">Isi dengan 0 jika target tak terhingga</p>
+                            <p class="form-help">Target minimal 10.000</p>
                             @error('donation_target')
                                 <p class="invalid-feedback">{{ $message }}</p>
                             @enderror 
@@ -141,7 +152,7 @@
                 </div>
                 <div class="flex justify-end">
                     <a href="{{ route('admin.campaigns.index') }}" class="btn btn-light mr-2">Close</a>
-                    <button class="btn btn-success" type="submit">Save</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
                 </div>
             </div>
         </div>

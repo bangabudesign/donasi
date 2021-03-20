@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
-use App\Models\Donation;
+use App\Models\Transaction;
 use App\Models\PaymentMethod;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -68,7 +68,6 @@ class DonationController extends Controller
 
         $data = ([
             'invoice' => $invoice,
-            'campaign_id' => $campaign->id,
             'amount' => $request->amount,
             'is_anonim' => $request->is_anonim ?? 0,
             'comment' => $request->comment,
@@ -77,47 +76,10 @@ class DonationController extends Controller
             'status' => 1,
         ]);
 
-        $donation = Donation::create($data);
+        $donation = $campaign->donations()->create($data);
         $donation->save();
 
-    return redirect()->route('donation.invoice', $donation->invoice);
-    }
-
-    public function invoice($invoice)
-    {
-        $donation = Donation::where('invoice', $invoice)
-            ->with('payment_method')
-            ->firstOrFail();
-
-        return view('pages.donation.invoice', [
-            'donation' => $donation,
-        ]);
-    }
-
-    public function confirm(Request $request, $invoice)
-    {
-        $donation = Donation::where('invoice', $invoice)
-            ->with('payment_method')
-            ->firstOrFail();
-        
-        $request->validate([
-            'payment_date' => 'required',
-            'payment_detail_1' => 'required',
-            'payment_detail_2' => 'required',
-            'payment_detatail_3' => 'nullable|max:140'
-        ]);
-
-        $data = ([
-            'payment_date' => $request->payment_date,
-            'payment_detail_1' => $request->payment_detail_1,
-            'payment_detail_2' => $request->payment_detail_2,
-            'payment_detail_3' => $request->payment_detail_3,
-            'payment_status' => 2, // PENDING
-        ]);
-
-        $donation->update($data);
-        
-        return redirect()->back();
+    return redirect()->route('transaction.invoice', $donation->invoice);
     }
 
     private function _validateUser($request)

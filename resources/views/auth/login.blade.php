@@ -19,7 +19,7 @@
                 <p class="invalid-feedback" role="alert">{{ $message }}</p>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-success w-full">{{ __('Login') }}</button>
+            <button type="submit" class="btn btn-primary w-full">{{ __('Login') }}</button>
             <p class="text-center text-gray-700 my-4 text-sm">Belum memiliki akun?</p>
             <a href="{{ route('register') }}" class="btn btn-light w-full">{{ __('Register') }}</a>
         </form>

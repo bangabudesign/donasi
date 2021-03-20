@@ -14,7 +14,7 @@
 </head>
 <body>
     @include('shared.header_primary')
-    <div class="pt-10 md:pt-20">            
+    <div class="pt-16 md:pt-20">            
         @yield('content')
     </div>
     <footer class="w-full border-t bg-white py-12">
@@ -25,7 +25,8 @@
                 <a href="#" class="uppercase px-3">Terms &amp; Conditions</a>
                 <a href="#" class="uppercase px-3">Contact Us</a>
             </div>
-            <div class="pb-6">Copyright © 2020 www.lazisnukalsel.com</div>
+            <div class="pb-2">Copyright © 2021 www.lazismualmukhlishin.com</div>
+            <div class="pb-6 text-gray-500 text-xs leading-none"><p>Developed By <a href="https://bmkstudio.id" target="blank">bmkstudio.id</a></p></div>
         </div>
     </footer>
 

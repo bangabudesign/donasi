@@ -26,14 +26,14 @@ class CampaignRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'slug' => 'required|alpha_dash|max:255|unique:campaigns,slug,'.$this->id,
-            'code' => 'required|alpha_num|max:20|unique:campaigns,code,'.$this->id,
-            'donation_target' => 'required|integer',
+            'donation_target' => 'required|integer|min:10.000',
             'finished_at' => 'nullable',
             'description' => 'required',
             'short_description' => 'required|max:140',
             'published_at' => 'required',
             'status' => 'required|integer',
             'featured_image' => 'nullable|image|max:2048',
+            'category_id' => 'required',
         ];
     }
 }

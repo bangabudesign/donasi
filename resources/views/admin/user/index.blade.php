@@ -7,7 +7,7 @@
         <p class="mt-0 text-gray-600">{{ $subtitle }}</p>
     </div>
     <div class="mt-auto">
-        <a href="{{ route('admin.users.create') }}" class="btn btn-success">Add New</a>
+        <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Add New</a>
     </div>
 </div>
 @if (session('successMessage'))

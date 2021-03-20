@@ -16,7 +16,6 @@ class Campaign extends Model
     protected $fillable = [
         'title',
         'slug',
-        'code',
         'donation_target',
         'finished_at',
         'published_at',
@@ -25,6 +24,7 @@ class Campaign extends Model
         'short_description',
         'featured_image',
         'user_id',
+        'category_id',
         'verified_at',
         'verified_by',
     ];
@@ -99,6 +99,11 @@ class Campaign extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
     public function scopeLatestFirst($query)
     {
         return $query->orderBy('published_at', 'DESC');
@@ -115,6 +120,6 @@ class Campaign extends Model
 
     public function donations()
     {
-        return $this->hasMany('App\Models\Donation');
+        return $this->morphMany('App\Models\Transaction', 'transactionable');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.donate')
+@extends('layouts.transaction')
 
 @section('content')
 <!-- select payment -->

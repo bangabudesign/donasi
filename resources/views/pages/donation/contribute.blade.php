@@ -1,4 +1,4 @@
-@extends('layouts.donate')
+@extends('layouts.transaction')
 
 @section('content')
 <!-- select amount -->
@@ -22,7 +22,7 @@
                     <div class="flex items-center">
                         <p>Metode Pembayaran</p>
                     </div>
-                    <a href="#" class="btn-sm btn-success" onclick="gotoPayment(event)">Ganti</a>
+                    <a href="#" class="btn-sm btn-primary" onclick="gotoPayment(event)">Ganti</a>
                 </div>
             </div>
             @error('payment_method_id')

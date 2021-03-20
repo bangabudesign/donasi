@@ -3,7 +3,7 @@
     <div class="card card-body mb-4">
         <h4 class="card-title font-bold">About Us</h4>
         <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
-        <a href="#" class="btn btn-success">GET TO KNOW US</a>
+        <a href="#" class="btn btn-primary">GET TO KNOW US</a>
     </div>
     <div class="card card-body mb-4">
         <div class="w-full flex flex-col items-center">

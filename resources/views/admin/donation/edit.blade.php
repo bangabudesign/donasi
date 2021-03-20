@@ -19,7 +19,7 @@
                 <select class="form-control @error('campaign_id') invalid @enderror" name="campaign_id" required>
                     <option value="">Choose...</option>
                     @forelse ($campaigns as $campaign)
-                    <option value="{{ $campaign->id }}" {{ old('campaign_id', $donation->campaign_id) == $campaign->id ? 'selected' : '' }}>{{ $campaign->code.' - '.Helper::truncate($campaign->title,20,'...') }}</option>
+                    <option value="{{ $campaign->id }}" {{ old('campaign_id', $donation->transactionable_id) == $campaign->id ? 'selected' : '' }}>{{ $campaign->code.' - '.Helper::truncate($campaign->title,20,'...') }}</option>
                     @empty
                     <option value="">No data</option>
                     @endforelse
@@ -226,7 +226,7 @@
         </div>
         <div class="flex justify-end">
             <a href="{{ route('admin.donations.index') }}" class="btn btn-light mr-2">Close</a>
-            <button class="btn btn-success" type="submit">Save</button>
+            <button class="btn btn-primary" type="submit">Save</button>
         </div>
     </div>
 </form>

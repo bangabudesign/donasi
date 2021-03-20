@@ -7,7 +7,7 @@
         <p class="mt-0 text-gray-600">{{ $subtitle }}</p>
     </div>
     <div class="mt-auto">
-        <a href="{{ route('admin.campaigns.create') }}" class="btn btn-success">Add New</a>
+        <a href="{{ route('admin.campaigns.create') }}" class="btn btn-primary">Add New</a>
     </div>
 </div>
 @if (session('successMessage'))
@@ -36,8 +36,8 @@
                             <img src="{{ $campaign->thumbnail }}" alt="fatured_image" class="w-full rounded cursor-pointer hover:shadow">
                         </div>
                     </td>
-                    <td>{{ Helper::truncate($campaign->title,30,'...') }}<br>
-                        <p class="leading-tight text-gray-500">{{ $campaign->code }}</p>
+                    <td><a class="hover:text-orange-500" href="{{ route('campaigns.show', $campaign->slug) }}" target="_BLANK">{{ Helper::truncate($campaign->title,30,'...') }}</a><br>
+                        <span class="text-gray-500">{{ $campaign->category->name }}</span>
                     </td>
                     <td>Rp{{ $campaign->donation_target_formatted }}</td>
                     <td>{{ $campaign->finished_at_formatted }}</td>

@@ -66,7 +66,7 @@
         </div>
         <div class="flex justify-end">
             <a href="{{ route('admin.users.index') }}" class="btn btn-light mr-2">Close</a>
-            <button class="btn btn-success" type="submit">Save</button>
+            <button class="btn btn-primary" type="submit">Save</button>
         </div>
     </div>
 </form>

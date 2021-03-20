@@ -7,7 +7,7 @@
         <p class="mt-0 text-gray-600">{{ $subtitle }}</p>
     </div>
     <div class="mt-auto">
-        <a href="{{ route('admin.donations.create') }}" class="btn btn-success">Add New</a>
+        <a href="{{ route('admin.donations.create') }}" class="btn btn-primary">Add New</a>
     </div>
 </div>
 @if (session('successMessage'))
@@ -32,13 +32,13 @@
             <tbody>
                 @forelse ($donations as $donation)
                 <tr>
-                    <td><a href="{{ route('donation.invoice', $donation->invoice) }}" target="BLANK" class="btn-link">{{ $donation->invoice }}</a></td>
+                    <td><a href="{{ route('transaction.invoice', $donation->invoice) }}" target="BLANK" class="btn-link">{{ $donation->invoice }}</a></td>
                     <td>
                         <div class="flex items-center">
                             <img class="my-auto h-10 w-10 rounded-full" src="{{ $donation->user->profile_photo }}" alt="{{ $donation->user->name }}">
                             <div class="ml-2">
                                 <p class="leading-tight">{{ $donation->user->name }}</p>
-                                <p class="leading-tight text-gray-500">{{ $donation->campaign->code }}</p>
+                                <a class="leading-tight text-gray-500 hover:text-orange-500" href="{{ route('campaigns.show', $donation->transactionable->slug) }}" target="_BLANK">{{ Helper::truncate($donation->transactionable->title,10,'...') }}</a>
                             </div>
                         </div>                        
                     </td>

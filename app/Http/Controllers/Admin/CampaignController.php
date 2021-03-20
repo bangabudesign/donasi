@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CampaignRequest;
 use App\Models\Campaign;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Image;
@@ -14,6 +15,7 @@ class CampaignController extends Controller
 {
     public $title;
     public $subtitle;
+    public $categories;
     
     /**
      * Display a listing of the resource.
@@ -44,9 +46,12 @@ class CampaignController extends Controller
         $this->title = 'Add Campaign';
         $this->subtitle = 'Buat kampanye baru';
 
+        $this->categories = Category::get();
+
         return view('admin.campaign.create',[
             'title' => $this->title,
             'subtitle' => $this->subtitle,
+            'categories' => $this->categories,
         ]);
     }
 
@@ -61,7 +66,6 @@ class CampaignController extends Controller
         $data = ([
             'title' => $request->title,
             'slug' => Str::slug($request->slug),
-            'code' => Str::upper($request->code),
             'donation_target' => $request->donation_target,
             'finished_at' => $request->finished_at,
             'description' => $request->description,
@@ -70,11 +74,12 @@ class CampaignController extends Controller
             'status' => $request->status,
             'verified_at' => $request->verified_at,
             'user_id' => auth()->user()->id,
+            'category_id' => $request->category_id,
         ]);
 
         if ($request->file('featured_image')){
             $image = $request->file('featured_image');
-            $imageName = $data['slug'];
+            $imageName = $data['slug'].'-'.Str::random(6);
             $extension = $image->getClientOriginalExtension();
             $newImageName = $imageName . '.' . $extension;
             $imagePath = 'uploads/campaigns/'.$newImageName;
@@ -119,9 +124,12 @@ class CampaignController extends Controller
         $this->title = 'Edit Campaign';
         $this->subtitle = $campaign->title;
 
+        $this->categories = Category::get();
+
         return view('admin.campaign.edit',[
             'title' => $this->title,
             'subtitle' => $this->subtitle,
+            'categories' => $this->categories,
             'campaign' => $campaign
         ]);
     }
@@ -142,7 +150,6 @@ class CampaignController extends Controller
         $data = ([
             'title' => $request->title,
             'slug' => Str::slug($request->slug),
-            'code' => Str::upper($request->code),
             'donation_target' => $request->donation_target,
             'finished_at' => $request->finished_at,
             'description' => $request->description,
@@ -151,6 +158,7 @@ class CampaignController extends Controller
             'status' => $request->status,
             'verified_at' => $request->verified_at,
             'user_id' => auth()->user()->id,
+            'category_id' => $request->category_id,
         ]);
 
         if ($request->file('featured_image')){
@@ -163,7 +171,7 @@ class CampaignController extends Controller
             }
 
             $image = $request->file('featured_image');
-            $imageName = $data['slug'];
+            $imageName = $data['slug'].'-'.Str::random(6);
             $extension = $image->getClientOriginalExtension();
             $newImageName = $imageName . '.' . $extension;
             $imagePath = 'uploads/campaigns/'.$newImageName;
