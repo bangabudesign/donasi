@@ -7,7 +7,7 @@
         <div class="splide__track">
             <ul class="splide__list">
                 @forelse ($banners as $banner)
-                <li class="splide__slide"><a href="{{ $banner->link }}" target="_BLANK"><img src="{{ $banner->thumbnail }}" alt="Banner" class="w-full"></a></li>
+                <li class="splide__slide"><a href="{{ $banner->link }}" target="_BLANK"><img src="{{ $banner->thumbnail }}" alt="{{ $banner->name }}" class="w-full"></a></li>
                 @empty
                 <li class="splide__slide"><img src="http://placehold.it/1080X400" alt="Banner" class="w-full"></li>
                 @endforelse
@@ -43,7 +43,7 @@
                     <ul class="-m-2 flex flex-wrap justify-center items-center my-auto mx-auto">
                         @forelse ($categories as $category)
                             <li class="p-2 text-center">
-                                <a href="http://" class="inline-block bg-white shadow-md hover:shadow-lg border border-gray-300 py-3 px-4 rounded">{{ $category->name }}</a>
+                                <a href="{{ route('categories.campaign', $category->slug) }}" class="inline-block bg-white shadow-md hover:shadow-lg border border-gray-300 py-3 px-4 rounded">{{ $category->name }}</a>
                             </li>
                         @empty
                             <li class="p-2 text-center">

@@ -9,11 +9,13 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\PaymentMethodController as AdminPaymentMethodController;
 use App\Http\Controllers\Admin\BannerController as AdminBannerController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\ZakatController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,8 @@ Route::put('/transaction/{invoice}', [TransactionController::class, 'confirm'])-
 
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+Route::get('categories/campaign/{category}', [CategoryController::class, 'campaign'])->name('categories.campaign');
 
 Route::prefix('sahabatummat')->name('admin.')->middleware(['auth','admin'])->group(function () {
     Route::get('/', function () {
@@ -95,4 +99,10 @@ Route::prefix('sahabatummat')->name('admin.')->middleware(['auth','admin'])->gro
     Route::post('banners', [AdminBannerController::class, 'store'])->name('banners.store');
     Route::get('banners/{id}', [AdminBannerController::class, 'edit'])->name('banners.edit');
     Route::put('banners/{id}', [AdminBannerController::class, 'update'])->name('banners.update');
+    // categories
+    Route::get('categories', [AdminCategoryController::class, 'index'])->name('categories.index');
+    Route::get('categories/create', [AdminCategoryController::class, 'create'])->name('categories.create');
+    Route::post('categories', [AdminCategoryController::class, 'store'])->name('categories.store');
+    Route::get('categories/{id}', [AdminCategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('categories/{id}', [AdminCategoryController::class, 'update'])->name('categories.update');
 });

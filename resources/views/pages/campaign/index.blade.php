@@ -39,7 +39,7 @@
             </article>
         </div>
         @empty
-            
+            <h2 class="p-40">Belum Ada Program Untuk Kategori Ini</h2>
         @endforelse
     </section>
 </div>

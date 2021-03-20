@@ -7,14 +7,8 @@
         <p class="mt-0 text-gray-600">{{ $subtitle }}</p>
     </div>
 </div>
-@if (session('successMessage'))
-    <div class="alert alert-success">
-        {{ session('successMessage') }}
-    </div>
-@endif
-<form action="{{ route('admin.banners.update',$banner->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
     @csrf
-    @method('put')
     <div class="flex flex-wrap -m-3">
         <div class="md:w-4/6 p-3">
             <div class="card card-body">
@@ -22,17 +16,17 @@
                     <label class="form-label">
                         Name
                     </label>
-                    <input type="text" class="form-control @error('name') invalid @enderror" name="name" value="{{ old('name',$banner->name) }}" required>
+                    <input type="text" class="form-control @error('name') invalid @enderror" name="name" value="{{ old('name') }}" required>
                     @error('name')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror 
                 </div>
                 <div class="mb-4">
                     <label class="form-label">
-                        Link
+                        Slug
                     </label>
-                    <input type="text" class="form-control @error('link') invalid @enderror" name="link" value="{{ old('link',$banner->link) }}">
-                    @error('link')
+                    <input type="text" class="form-control @error('slug') invalid @enderror" name="slug" value="{{ old('slug') }}" required>
+                    @error('slug')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror 
                 </div>
@@ -40,30 +34,30 @@
                     <label class="form-label">
                         Description
                     </label>
-                    <textarea class="form-control @error('description') invalid @enderror" name="description" id="editor">{{ old('description',$banner->description) }}</textarea>
+                    <textarea class="form-control @error('description') invalid @enderror" name="description" id="editor">{{ old('description') }}</textarea>
                     @error('description')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror 
-                </div> 
+                </div>
             </div>
         </div>
         <div class="md:w-2/6 p-3">
-            <div class="card card-body">
+            <div class="bg-white p-6 rounded-md overflow-hidden shadow">
                 <div class="-m-6 mb-6">
-                    <img src="{{ $banner->image ? url('/',$banner->image) : 'http://placehold.it/1080X400' }}" alt="fatured_image" class="w-full" id="imgPreview">
+                    <img src="http://placehold.it/1080X400" alt="fatured_image" class="w-full" id="imgPreview">
                 </div>
                 <div class="mb-4">
                     <label class="form-label">
-                        Featured Image
+                        Image
                     </label>
                     <input type="file" accept="image/*" class="form-control @error('image') invalid @enderror" name="image" id="fileInput">
-                    <p class="form-help">Ukuran yang disarankan 1080px x 400px</p>
+                    <p class="form-help">Ukuran yang disarankan 720px x 225px</p>
                     @error('image')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror 
                 </div>
                 <div class="flex justify-end">
-                    <a href="{{ route('admin.banners.index') }}" class="btn btn-light mr-2">Close</a>
+                    <a href="{{ route('admin.categories.index') }}" class="btn btn-light mr-2">Close</a>
                     <button class="btn btn-primary" type="submit">Save</button>
                 </div>
             </div>
