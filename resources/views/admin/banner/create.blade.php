@@ -44,7 +44,7 @@
         <div class="md:w-2/6 p-3">
             <div class="bg-white p-6 rounded-md overflow-hidden shadow">
                 <div class="-m-6 mb-6">
-                    <img src="http://placehold.it/1080X400" alt="fatured_image" class="w-full" id="imgPreview">
+                    <img src="https://via.placeholder.com/1080X400" alt="fatured_image" class="w-full" id="imgPreview">
                 </div>
                 <div class="mb-4">
                     <label class="form-label">

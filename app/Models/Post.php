@@ -45,7 +45,7 @@ class Post extends Model
 
     public function getThumbnailAttribute()
     {
-        return $this->featured_image ? url('/',$this->featured_image) : 'http://placehold.it/400X225';
+        return $this->featured_image ? url('/',$this->featured_image) : 'https://via.placeholder.com/400X225';
     }
     
     public function user()

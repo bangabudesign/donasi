@@ -31,6 +31,6 @@ class Category extends Model
 
     public function getThumbnailAttribute()
     {
-        return $this->image ? url('/',$this->image) : 'http://placehold.it/300X300';
+        return $this->image ? url('/',$this->image) : 'https://via.placeholder.com/300X300';
     }
 }

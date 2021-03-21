@@ -32,7 +32,7 @@
                 <tr>
                     <td>
                         <div class="w-20">
-                            <img src="{{ $post->featured_image ? url('/',$post->featured_image) : 'http://placehold.it/400X225' }}" alt="fatured_image" class="w-full rounded cursor-pointer hover:shadow">
+                            <img src="{{ $post->featured_image ? url('/',$post->featured_image) : 'https://via.placeholder.com/400X225' }}" alt="fatured_image" class="w-full rounded cursor-pointer hover:shadow">
                         </div>
                     </td>
                     <td>{{ $post->title }}</td>

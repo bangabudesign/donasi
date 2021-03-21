@@ -35,7 +35,7 @@ class PaymentMethod extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->image ? url('/',$this->image) : 'http://placehold.it/70X39';
+        return $this->image ? url('/',$this->image) : 'https://via.placeholder.com/70X39';
     }
 
     public function getStatusFormattedAttribute()

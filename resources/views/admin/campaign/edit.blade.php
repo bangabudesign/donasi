@@ -108,7 +108,7 @@
         <div class="md:w-2/6 p-3">
             <div class="card card-body">
                 <div class="-m-6 mb-6">
-                    <img src="{{ $campaign->featured_image ? url('/',$campaign->featured_image) : 'http://placehold.it/400X225' }}" alt="fatured_image" class="w-full" id="imgPreview">
+                    <img src="{{ $campaign->featured_image ? url('/',$campaign->featured_image) : 'https://via.placeholder.com/400X225' }}" alt="fatured_image" class="w-full" id="imgPreview">
                 </div>
                 <div class="mb-4">
                     <label class="form-label">

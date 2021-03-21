@@ -50,7 +50,7 @@
         <div class="md:w-2/6 p-3">
             <div class="card card-body">
                 <div class="-m-6 mb-6">
-                    <img src="{{ $banner->image ? url('/',$banner->image) : 'http://placehold.it/1080X400' }}" alt="fatured_image" class="w-full" id="imgPreview">
+                    <img src="{{ $banner->image ? url('/',$banner->image) : 'https://via.placeholder.com/1080X400' }}" alt="fatured_image" class="w-full" id="imgPreview">
                 </div>
                 <div class="mb-4">
                     <label class="form-label">

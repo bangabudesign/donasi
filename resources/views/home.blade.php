@@ -9,7 +9,7 @@
                 @forelse ($banners as $banner)
                 <li class="splide__slide"><a href="{{ $banner->link }}" target="_BLANK"><img src="{{ $banner->thumbnail }}" alt="{{ $banner->name }}" class="w-full"></a></li>
                 @empty
-                <li class="splide__slide"><img src="http://placehold.it/1080X400" alt="Banner" class="w-full"></li>
+                <li class="splide__slide"><img src="https://via.placeholder.com/1080X400" alt="Banner" class="w-full"></li>
                 @endforelse
             </ul>
         </div>

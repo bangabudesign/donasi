@@ -14,7 +14,7 @@
             <div class="mb-4 mr-4">                        
                 <label class="form-label">IMAGE</label>
                 <div class="overflow-hidden" style="height: 52px; width: 85px">
-                    <img src="http://placehold.it/70X39" alt="image" class="rounded h-full w-full object-cover" id="imgPreview">
+                    <img src="https://via.placeholder.com/70X39" alt="image" class="rounded h-full w-full object-cover" id="imgPreview">
                 </div>
             </div>
             <div class="mb-4">

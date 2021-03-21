@@ -21,6 +21,6 @@ class Banner extends Model
 
     public function getThumbnailAttribute()
     {
-        return $this->image ? url('/',$this->image) : 'http://placehold.it/1080X400';
+        return $this->image ? url('/',$this->image) : 'https://via.placeholder.com/1080X400';
     }
 }
