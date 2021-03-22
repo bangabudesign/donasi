@@ -11,6 +11,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function routeNotificationForWhatsApp()
+    {
+        return $this->phone;
+    }
+
     /**
      * The attributes that are mass assignable.
      *

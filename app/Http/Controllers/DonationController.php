@@ -8,6 +8,7 @@ use App\Models\PaymentMethod;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\DonationCreated;
 
 class DonationController extends Controller
 {
@@ -79,7 +80,10 @@ class DonationController extends Controller
         $donation = $campaign->donations()->create($data);
         $donation->save();
 
-    return redirect()->route('transaction.invoice', $donation->invoice);
+        // send notification to user
+        $donation->user->notify(new DonationCreated($donation));
+
+        return redirect()->route('transaction.invoice', $donation->invoice);
     }
 
     private function _validateUser($request)

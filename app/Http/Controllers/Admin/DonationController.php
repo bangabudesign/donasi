@@ -9,6 +9,8 @@ use App\Models\Transaction;
 use App\Models\PaymentMethod;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Notifications\DonationCreated;
+use App\Notifications\DonationSuccess;
 
 class DonationController extends Controller
 {
@@ -89,7 +91,12 @@ class DonationController extends Controller
         ]);
 
         $campaign = Campaign::findOrFail($request->campaign_id);
-        $campaign->donations()->create($data);
+        $donation = $campaign->donations()->create($data);
+        
+        if ($donation->payment_status == 1) {
+            // send notification to user
+            $donation->user->notify(new DonationCreated($donation));
+        }
 
         return redirect()->route('admin.donations.index')->with('successMessage', 'Donation has been created');
     }
@@ -162,6 +169,9 @@ class DonationController extends Controller
         ]);
 
         $donation->update($data);
+
+        // send notification to user
+        $donation->user->notify(new DonationSuccess($donation));
 
         return redirect()->route('admin.donations.index')->with('successMessage', 'Donation has been updated');
     }
