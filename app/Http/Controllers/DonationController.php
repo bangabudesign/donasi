@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\DonationCreated;
+use App\Notifications\WelcomeMessage;
 
 class DonationController extends Controller
 {
@@ -104,5 +105,8 @@ class DonationController extends Controller
         $user->save();            
         // Login user yang telah dibuat
         auth()->login($user);
+
+        // send notification to user
+        $user->notify(new WelcomeMessage($user));
     }
 }
