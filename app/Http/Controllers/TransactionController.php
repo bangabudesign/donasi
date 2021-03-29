@@ -73,6 +73,16 @@ class TransactionController extends Controller
     return redirect()->route('donation.invoice', $donation->invoice);
     }
 
+    public function index()
+    {
+        $user = User::findOrFail(auth()->user()->id);
+        $transactions = $user->transactions()->latestFirst()->get();
+        
+        return view('pages.transaction.index', [
+            'transactions' => $transactions,
+        ]);
+    }
+
     public function invoice($invoice)
     {
         $transaction = Transaction::where('invoice', $invoice)

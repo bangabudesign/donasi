@@ -44,6 +44,7 @@ Route::get('/zakat/{id}/payment-option', [ZakatController::class, 'payment'])->n
 Route::get('/zakat/{id}/contribute', [ZakatController::class, 'contribute'])->name('zakat.contribute');
 Route::post('/zakat/{id}/contribute', [ZakatController::class, 'store'])->name('zakat.store');
 
+Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction.index')->middleware(['auth']);
 Route::get('/transaction/{invoice}', [TransactionController::class, 'invoice'])->name('transaction.invoice');
 Route::put('/transaction/{invoice}', [TransactionController::class, 'confirm'])->name('transaction.confirm');
 

@@ -16,6 +16,9 @@
                 <li class="w-full md:w-auto"><a href="{{ route('campaigns.index') }}" class="nav-link {{ Helper::isActive('campaigns') }}">Program</a></li>
                 <li class="w-full md:w-auto"><a href="{{ route('zakat.category') }}" class="nav-link">Bayar Zakat</a></li>
                 <li class="w-full md:w-auto"><a href="{{ route('posts.index') }}" class="nav-link {{ Helper::isActive('posts') }}">Artikel</a></li>
+                @auth
+                <li class="w-full md:w-auto"><a href="{{ route('transaction.index') }}" class="nav-link">Riwayat</a></li>
+                @endauth
                 <li class="-mt-2 pb-2 md:-my-1 md:pb-0 md:px-2"><span class="inline-block h-px w-full md:h-full md:w-px bg-gray-200"></span></li>
                 @guest
                 <li class="w-full md:w-auto"><a href="{{ route('login') }}" class="inline-block w-full px-4 py-3 rounded text-center font-bold text-sm uppercase bg-gray-100 md:bg-transparent hover:text-orange-400 mb-2 md:mb-0">Masuk</a></li>

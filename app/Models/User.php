@@ -80,8 +80,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Campaign');
     }
 
-    public function donations()
+    public function transactions()
     {
-        return $this->hasMany('App\Models\Donation');
+        return $this->hasMany('App\Models\Transaction');
     }
 }
