@@ -109,7 +109,7 @@
                         Featured Image
                     </label>
                     <input type="file" accept="image/*" class="form-control @error('featured_image') invalid @enderror" name="featured_image" id="fileInput">
-                    <p class="form-help">Ukuran yang disarankan 400px x 225px</p>
+                    <p class="form-help">Ukuran yang disarankan 720px x 405px</p>
                     @error('featured_image')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror 

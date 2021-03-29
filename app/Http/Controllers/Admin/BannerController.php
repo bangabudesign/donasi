@@ -72,6 +72,11 @@ class BannerController extends Controller
             $imagePath = 'uploads/banners/'.$newImageName;
 
             $img = Image::make($image);
+            $img->resize(1080, 400, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $img->crop(1080, 400);
             $img->save($imagePath);
 
             $data['image'] = $imagePath;
@@ -149,6 +154,11 @@ class BannerController extends Controller
             $imagePath = 'uploads/banners/'.$newImageName;
 
             $img = Image::make($image);
+            $img->resize(1080, 400, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $img->crop(1080, 400);
             $img->save($imagePath);
 
             $data['image'] = $imagePath;
