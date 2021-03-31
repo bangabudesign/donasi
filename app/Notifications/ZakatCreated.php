@@ -9,22 +9,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class DonationCreated extends Notification
+class ZakatCreated extends Notification
 {
     use Queueable;
 
     protected $user;
-    protected $donation;
+    protected $transaction;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($donation)
+    public function __construct($transaction)
     {
-        $this->user = $donation->user;
-        $this->donation = $donation;
+        $this->user = $transaction->user;
+        $this->transaction = $transaction;
     }
 
     /**
@@ -62,13 +62,13 @@ class DonationCreated extends Notification
     {
         return (new WhatsAppMessage)
                 ->greeting('*Halo!, '.$this->user->name.'*')
-                ->line('Terimakasih telah berdonasi, silakan segera lakukan pembayaran melalui '.$this->donation->payment_method->category.' ke')
-                ->line('*'.$this->donation->payment_method->detail_2.' '.$this->donation->payment_method->short_name.'*')
-                ->line('A/N *'.$this->donation->payment_method->detail_3.'*')
-                ->line('Sebesar *Rp'.number_format($this->donation->amount).'*')
+                ->line('Terimakasih telah berdonasi, silakan segera lakukan pembayaran melalui '.$this->transaction->payment_method->category.' ke')
+                ->line('*'.$this->transaction->payment_method->detail_2.' '.$this->transaction->payment_method->short_name.'*')
+                ->line('A/N *'.$this->transaction->payment_method->detail_3.'*')
+                ->line('Sebesar *Rp'.number_format($this->transaction->amount).'*')
                 ->line('')
                 ->line('Untuk konfirmasi pembayaran klik link dibawah ini')
-                ->line(route('transaction.invoice', $this->donation->invoice));
+                ->line(route('transaction.invoice', $this->transaction->invoice));
     }
 
     /**

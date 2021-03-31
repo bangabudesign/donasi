@@ -102,7 +102,7 @@
         <div class="md:w-2/6 p-3">
             <div class="bg-white p-6 rounded-md overflow-hidden shadow">
                 <div class="-m-6 mb-6">
-                    <img src="https://via.placeholder.com/400X225" alt="fatured_image" class="w-full" id="imgPreview">
+                    <img src="https://via.placeholder.com/720x405" alt="fatured_image" class="w-full" id="imgPreview">
                 </div>
                 <div class="mb-4">
                     <label class="form-label">

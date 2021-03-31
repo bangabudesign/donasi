@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Zakat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\ZakatCreated;
+use App\Notifications\WelcomeMessage;
 
 class ZakatController extends Controller
 {
@@ -66,10 +68,13 @@ class ZakatController extends Controller
             'status' => 1,
         ]);
 
-        $donation = $zakat->transactions()->create($data);
-        $donation->save();
+        $transaction = $zakat->transactions()->create($data);
+        $transaction->save();
 
-    return redirect()->route('transaction.invoice', $donation->invoice);
+        // send notification to user
+        $transaction->user->notify(new ZakatCreated($transaction));
+
+        return redirect()->route('transaction.invoice', $transaction->invoice);
     }
 
     private function _validateUser($request)
@@ -90,5 +95,8 @@ class ZakatController extends Controller
         $user->save();            
         // Login user yang telah dibuat
         auth()->login($user);
+
+        // send notification to user
+        $user->notify(new WelcomeMessage($user));
     }
 }

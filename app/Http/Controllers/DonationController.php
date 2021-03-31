@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\DonationCreated;
+use App\Notifications\AdminTransactionCreated;
 use App\Notifications\WelcomeMessage;
 
 class DonationController extends Controller
@@ -83,6 +84,12 @@ class DonationController extends Controller
 
         // send notification to user
         $donation->user->notify(new DonationCreated($donation));
+
+        //send notification to admin
+        $admins = User::where('is_admin', 1)->get();
+        foreach ($admins as $admin) {
+            $admin->notify(new AdminTransactionCreated($donation));
+        }
 
         return redirect()->route('transaction.invoice', $donation->invoice);
     }

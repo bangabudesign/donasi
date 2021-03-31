@@ -36,6 +36,7 @@
                         <select class="form-control @error('type') invalid @enderror" name="type" require>
                             <option value="BANKTRANSFER" {{ old('type') == 'BANKTRANSFER' ? 'selected' : '' }}>BANKTRANSFER</option>
                             <option value="VIRTUALACCOUNT" {{ old('type') == 'VIRTUALACCOUNT' ? 'selected' : '' }}>VIRTUALACCOUNT</option>
+                            <option value="TUNAI" {{ old('type') == 'TUNAI' ? 'selected' : '' }}>TUNAI</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -54,6 +55,7 @@
                     <div class="relative">
                         <select class="form-control @error('category') invalid @enderror" name="category" require>
                             <option value="BANK_TRANSFER" {{ old('category') == 'BANK_TRANSFER' ? 'selected' : '' }}>BANK TRANSFER</option>
+                            <option value="TUNAI" {{ old('category') == 'TUNAI' ? 'selected' : '' }}>TUNAI</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
