@@ -61,8 +61,8 @@ class AdminTransactionCreated extends Notification
     public function toWhatsApp($notifiable)
     {
         return (new WhatsAppMessage)
-                ->greeting('*Halo!, '.$this->user->name.'*')
-                ->line('Seseorang baru saja melakukan transaksi melalui '.$this->transaction->payment_method->category.' ke')
+                ->greeting('*Halo!, '.$notifiable->name.'*')
+                ->line($this->user->name.' +62'.$this->user->phone.' baru saja melakukan transaksi melalui '.$this->transaction->payment_method->category.' ke')
                 ->line('*'.$this->transaction->payment_method->detail_2.' '.$this->transaction->payment_method->short_name.'*')
                 ->line('A/N *'.$this->transaction->payment_method->detail_3.'*')
                 ->line('Sebesar *Rp'.number_format($this->transaction->amount).'*')

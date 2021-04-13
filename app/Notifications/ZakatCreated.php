@@ -68,6 +68,7 @@ class ZakatCreated extends Notification
                 ->line('Sebesar *Rp'.number_format($this->transaction->amount).'*')
                 ->line('')
                 ->line('Untuk konfirmasi pembayaran klik link dibawah ini')
+                ->line('https://wa.me/')
                 ->line(route('transaction.invoice', $this->transaction->invoice));
     }
 
